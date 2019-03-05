@@ -29,8 +29,7 @@ Server configuration
         // Initialization fonction
         init(){
             //=> Use Path to add views
-            server.engine( 'html', ejs.renderFile );
-            server.set( 'view engine', 'html' );
+            server.set( 'view engine', 'ejs' );
             server.set( 'views', __dirname + '/www' );
             server.use( express.static(path.join(__dirname, 'www')) );
 

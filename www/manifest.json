@@ -1,0 +1,25 @@
+{
+  "short_name": "aryballe-node",
+  "name": "Aryballe Project NODE",
+  "description": "Aryballe Project: a Lidar project to learn NoSQL technology",
+  "icons": [
+    {
+      "src": "/img/icon/icon_small.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/img/icon/icon_large.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/index.html",
+  "display": "minimal-ui",
+  "background_color": "#0f181c",
+  "theme_color": "#0f181c",
+  "dir": "ltr",
+  "lang": "en",
+  "orientation": "landscape-primary",
+  "prefer_related_applications": false
+}

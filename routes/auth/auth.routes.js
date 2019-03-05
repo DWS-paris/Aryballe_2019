@@ -8,7 +8,7 @@ Imports
     // Inner
     const { sendBodyError, sendFieldsError, sendApiSuccessResponse, sendApiErrorResponse } = require('../../services/response.service');
     const { checkFields } = require('../../services/request.service');
-    const { register, confirmIdentity, login, setPassword } = require('./auth.controller');
+    const { register, login, setPassword } = require('./auth.controller');
 //
 
 /*
@@ -30,7 +30,7 @@ Routes definition
                 if (typeof req.body === 'undefined' || req.body === null) { sendBodyError(res, 'No body data provided') };
 
                 // Check fields in the body
-                const { miss, extra, ok } = checkFields(['email', 'password'], req.body);
+                const { miss, extra, ok } = checkFields(['email', 'password', 'firstName', 'lastName'], req.body);
                 //=> Error: bad fields provided
                 if (!ok) { sendFieldsError(res, 'Bad fields provided', miss, extra) }
                 else{
@@ -38,25 +38,6 @@ Routes definition
                     register(req.body, res)
                     .then( apiResponse => sendApiSuccessResponse(res, 'Request succeed', apiResponse) )
                     .catch( apiResponse => sendApiErrorResponse(res, 'Request failed', apiResponse))
-                };
-            });
-
-            // POST 'api/auth/identity-validation': send data to validate user identity
-            authRouter.post( '/identity-validation', (req, res) => {
-                // Check request body
-                if (typeof req.body === 'undefined' || req.body === null) { sendBodyError(res, 'No body data provided') };
-
-                console.log(req.body)
-
-                // Check fields in the body
-                const { miss, extra, ok } = checkFields( ['_id', 'password'], req.body );
-                //=> Error: bad fields provided
-                if (!ok) { sendFieldsError(res, 'Bad fields provided', miss, extra) }
-                else{
-                    //=> Request is valid: use controller
-                    confirmIdentity(req.body)
-                    .then( apiResponse => sendApiSuccessResponse(res, 'Request succeed', apiResponse) )
-                    .catch( apiResponse => sendApiErrorResponse(res, 'Request failed', apiResponse) );
                 };
             });
 

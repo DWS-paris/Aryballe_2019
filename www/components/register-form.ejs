@@ -1,0 +1,36 @@
+<main id="authentication">
+    <section>
+        <article>
+            <h1>Aryballe Project 
+                <span>
+                    <% if( !title ){ %>
+                        Register to create your account.
+                    <% } else{ %>
+                        <b><%= title %></b>
+                    <% } %>
+                </span>
+            </h1>
+        </article>
+
+        <article>
+            <form action="/api/auth/register" method="post">
+                <label for="firstName">First name</label>
+                <input type="text" name="firstName" required="required">
+            
+                <label for="lastName">Last name</label>
+                <input type="text" name="lastName" required="required">
+            
+                <label for="email">Email</label>
+                <input type="email" name="email" required="required">
+            
+                <label for="password">Password</label>
+                <input type="text" name="password" required="required">
+            
+                <p class="termsAndCondition"><input type="checkbox" required="required"> I accept general conditions</p>
+            
+                <button type="submit" id="loginBtn">Register</button>
+                <a id="loginBtn" href="/">Login</a>
+            </form>
+        </article>
+    </section>
+</main>

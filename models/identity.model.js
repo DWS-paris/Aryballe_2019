@@ -12,6 +12,9 @@ Definition
     const identitySchema = new Schema({
         email: String,
         password: String,
+        firstName: String,
+        lastName: String,
+        cgu: Boolean,
         isValidated: Boolean,
         creationDate: String,
         lastConnection: String

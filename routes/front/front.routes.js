@@ -3,6 +3,7 @@ Imports
 */
     const express = require('express');
     const frontRouter = express.Router();
+    const store = require('store');
 //
 
 /*
@@ -17,13 +18,18 @@ Routes definition
         
         // Set route fonctions
         routes(){
-            // GET '/*': for all requests send 'index' file
-            frontRouter.get( '/me', this.passport.authenticate('jwt', { session: false }), (req, res) => {
-                res.render('index')
-            });
+            frontRouter.get( ['/'], (req, res) => { res.render('index', { title: undefined }) });
 
-            frontRouter.get( '/*', (req, res) => {
-                res.render('index')
+            frontRouter.get( ['/register'], (req, res) => { res.render('register', { title: undefined }) });
+
+            frontRouter.get( ['/logout'], (req, res) => { 
+                store.remove('user');
+                res.redirect('/') 
+            });
+            
+            frontRouter.get( ['/potree'], (req, res) => {
+                console.log(store.get('user'))
+                store.get('user') ? res.render('potree', { title: undefined, user: store.get('user') }) : res.redirect('/');
             });
         };
 

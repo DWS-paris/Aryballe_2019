@@ -1,0 +1,28 @@
+<main id="authentication">
+    <section>
+        <article>
+            <h1>Aryballe Project 
+                <span>
+                    <% if( !title ){ %>
+                        Login to start playing!
+                    <% } else{ %>
+                        <b><%= title %></b>
+                    <% } %>
+                </span>
+            </h1>
+        </article>
+
+        <article>
+            <form action="/api/auth/login" method="post">
+                <label for="email">Email</label>
+                <input type="email" name="email" required="required">
+                
+                <label for="password">Password</label>
+                <input type="password" name="password" required="required">
+                
+                <button type="submit" id="loginBtn">Login</button>
+                <a id="loginBtn" href="/register">Register</a>
+            </form>
+        </article>
+    </section>
+</main>
