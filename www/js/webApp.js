@@ -139,8 +139,8 @@ $(document).ready( () => {
           "onclick": function() {
             if (confirm("Remove this annotation ?")) {
               myCollection.removeData(data)
-              .then( response => { console.log(`Data removed: `, response) })
-              .catch( response => { console.error(`Error while processing: `, response) })
+              .then( response => { alert(`Data removed: `, response.id) })
+              .catch( response => { alert(`Error while processing`) })
             }
           }
         }]
@@ -236,7 +236,7 @@ $(document).ready( () => {
       // Fecth data
       myCollection.fetchData(showAnnotations)
 
-      console.log('User interface loaded: ', viewer);
+      // console.log('User interface loaded: ', viewer);
     });
   //
 });
